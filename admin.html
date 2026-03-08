@@ -1,0 +1,25 @@
+<div class="admin-container">
+    <h1 style="color: #2c3e50;">Master User Data 🔐</h1>
+    <p>Access Level: Full Admin (Shaurya)</p>
+    
+    <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
+        <tr style="background-color: #f2f2f2;">
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Weight (kg)</th>
+            <th>Maintenance Goal</th>
+            <th>Status</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.weight }}</td>
+            <td>{{ user.maintenance_cals }} kcal</td>
+            <td>Active</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

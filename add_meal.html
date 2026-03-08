@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Add Your Meal 🍎</h2>
+    <form action="/update_cals" method="POST">
+        <label>Meal Name:</label>
+        <input type="text" name="meal_name" placeholder="e.g., Breakfast Oats" required>
+        
+        <label>Calories (kcal):</label>
+        <input type="number" name="calories" placeholder="e.g., 400" required>
+        
+        <button type="submit">Update My Total</button>
+    </form>
+    
+    <div class="summary">
+        <p>Goal: {{ maintenance_cals }} kcal</p>
+        <p>Consumed: {{ total_consumed }} kcal</p>
+        <p><strong>Remaining: {{ maintenance_cals - total_consumed }} kcal</strong></p>
+    </div>
+</div>

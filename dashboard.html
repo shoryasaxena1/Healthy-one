@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthy-One Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; color: #333; }
+        .container { max-width: 800px; margin: 50px auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .calorie-box { text-align: center; padding: 20px; background: #e8f5e9; border-radius: 10px; margin-bottom: 20px; }
+        .progress-bar { width: 100%; background: #ddd; border-radius: 20px; height: 25px; margin: 10px 0; }
+        .progress-fill { height: 100%; background: #4caf50; width: 45%; border-radius: 20px; transition: width 0.5s; }
+        .popup { display: none; position: fixed; bottom: 20px; right: 20px; background: #333; color: white; padding: 15px; border-radius: 8px; animation: slideIn 0.5s; }
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome back, {{ username }}!</h1>
+    
+    <div class="calorie-box">
+        <h3>Daily Maintenance Goal: <strong>{{ maintenance_cals }} kcal</strong></h3>
+        <div class="progress-bar">
+            <div class="progress-fill" id="calProgress"></div>
+        </div>
+        <p>You have used 1,100 / {{ maintenance_cals }} calories today.</p>
+    </div>
+
+    <div class="actions">
+        <button onclick="addCalories()">Add Meal</button>
+        <button onclick="toggleReminders()">Toggle Notifications</button>
+    </div>
+</div>
+
+<div id="reminderPopup" class="popup">
+    <span id="popupText">Time to drink some water! 💧</span>
+</div>
+
+<script>
+    // 2. Pop-up Reminder Logic
+    const reminders = [
+        "Time for a quick stretch! 🧘‍♂️",
+        "Drink a glass of water now. 💧",
+        "Check your posture! Sit up straight. ✨",
+        "Take 5 deep breaths. 🌬️"
+    ];
+
+    function showNotification() {
+        const popup = document.getElementById('reminderPopup');
+        const text = document.getElementById('popupText');
+        text.innerText = reminders[Math.floor(Math.random() * reminders.length)];
+        
+        popup.style.display = 'block';
+        setTimeout(() => { popup.style.display = 'none'; }, 5000);
+    }
+
+    // Set an interval for reminders (every 30 minutes)
+    setInterval(showNotification, 1800000); 
+</script>
+
+</body>
+</html>
